@@ -1,8 +1,7 @@
-package cn.ln.truck.service.account.mapper;
+package cn.ln.truck.service.account.mapper.users;
 
-import cn.ln.truck.service.account.entity.UsersEntity;
+import cn.ln.truck.service.account.entity.users.UsersEntity;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -11,4 +10,5 @@ public interface UsersMapper
 {
     UsersEntity findUserById(String id);
     List<UsersEntity> findUserAll();
+    int insertUser(UsersEntity usersEntity);
 }

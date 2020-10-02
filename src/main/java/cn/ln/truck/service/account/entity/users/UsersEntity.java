@@ -1,4 +1,4 @@
-package cn.ln.truck.service.account.entity;
+package cn.ln.truck.service.account.entity.users;
 
 import lombok.Getter;
 import lombok.Setter;

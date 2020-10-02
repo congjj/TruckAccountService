@@ -1,9 +1,9 @@
-package cn.ln.truck.service.account.controller;
+package cn.ln.truck.service.account.controller.users;
 
 import cn.ln.truck.service.account.common.Result;
 import cn.ln.truck.service.account.common.ResultUtil;
-import cn.ln.truck.service.account.entity.UsersEntity;
-import cn.ln.truck.service.account.service.UsersService;
+import cn.ln.truck.service.account.entity.users.UsersEntity;
+import cn.ln.truck.service.account.service.users.UsersService;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -46,6 +46,35 @@ public class UsersController
         List<UsersEntity> users = userService.findUserAll();
         return ResultUtil.success(SUCCESS, users);
     }
+
+    @ApiOperation(value = "获取用户")
+    @RequestMapping(method = RequestMethod.POST, path = "insertUser")
+    public Object insertUser(@RequestBody UsersEntity usersEntity)
+    {
+        int count = userService.insertUser(usersEntity ) ;
+        if(count>0)
+        {
+            return ResultUtil .success();
+        }
+        else {
+            return ResultUtil.error(OPERATION_ERROR) ;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //    所有的 api 都用 post
 //    @RequestMapping("/getUser/{id}")
