@@ -20,5 +20,30 @@
     VALUES (#{id,jdbcType=VARCHAR},#{name,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR},#{active,jdbcType=INTEGER})
     </insert>
 
+    <update id="updateUser" parameterType="cn.ln.truck.service.account.entity.users.UsersEntity">
+        update users
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null">
+                active = #{active,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+
+
+
+
+
+
+
 
 </mapper>

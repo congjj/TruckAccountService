@@ -11,4 +11,5 @@ public interface UsersMapper
     UsersEntity findUserById(String id);
     List<UsersEntity> findUserAll();
     int insertUser(UsersEntity usersEntity);
+    int updateUser(UsersEntity usersEntity );
 }

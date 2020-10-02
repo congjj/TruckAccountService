@@ -14,4 +14,5 @@ public interface UsersService
 
     int insertUser(UsersEntity usersEntity);
 
+    int updateUser(UsersEntity usersEntity );
 }

@@ -47,7 +47,7 @@ public class UsersController
         return ResultUtil.success(SUCCESS, users);
     }
 
-    @ApiOperation(value = "获取用户")
+    @ApiOperation(value = "创建用户")
     @RequestMapping(method = RequestMethod.POST, path = "insertUser")
     public Object insertUser(@RequestBody UsersEntity usersEntity)
     {
@@ -61,7 +61,19 @@ public class UsersController
         }
     }
 
-
+    @ApiOperation(value = "修改用户")
+    @RequestMapping(method = RequestMethod.POST, path = "updateUser")
+    public Object updateUser(@RequestBody UsersEntity usersEntity)
+    {
+        int count = userService.updateUser(usersEntity ) ;
+        if(count>0)
+        {
+            return ResultUtil .success();
+        }
+        else {
+            return ResultUtil.error(OPERATION_ERROR) ;
+        }
+    }
 
 
 

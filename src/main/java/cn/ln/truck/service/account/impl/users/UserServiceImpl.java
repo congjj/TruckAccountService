@@ -37,6 +37,11 @@ public class UserServiceImpl implements UsersService
         return this.usersMapper .insertUser(usersEntity );
     }
 
+    @Override
+    public int updateUser(UsersEntity usersEntity)
+    {
+        return  this.usersMapper .updateUser(usersEntity );
+    }
 
 
 }
