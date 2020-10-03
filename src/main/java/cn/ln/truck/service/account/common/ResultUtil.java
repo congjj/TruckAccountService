@@ -1,11 +1,13 @@
 package cn.ln.truck.service.account.common;
 
+import static cn.ln.truck.service.account.common.ResultEnum.OPERATION_ERROR;
 import static cn.ln.truck.service.account.common.ResultEnum.SUCCESS;
 
 public class ResultUtil
 {
-    public static Result<Object> success(ResultEnum resultEnum, Object object)
+    public static Result<Object> success(Object object)
     {
+        ResultEnum resultEnum=SUCCESS;
         Result<Object> result = new Result<>();
         result.setCode(resultEnum.getCode());
         result.setMsg(resultEnum.getMsg());
@@ -21,11 +23,12 @@ public class ResultUtil
         return result;
     }
 
-    public static Result<Object> error(ResultEnum resultEnum)
+    public static Result<Object> error( String reason)
     {
+        ResultEnum resultEnum=OPERATION_ERROR;
         Result<Object> result = new Result<>();
         result.setCode(resultEnum.getCode());
-        result.setMsg(resultEnum.getMsg());
+        result.setMsg(reason);
         return result;
     }
 }

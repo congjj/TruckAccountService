@@ -2,6 +2,7 @@ package cn.ln.truck.service.account.controller.users;
 
 import cn.ln.truck.service.account.common.Result;
 import cn.ln.truck.service.account.common.ResultUtil;
+import cn.ln.truck.service.account.entity.users.LoginEntity;
 import cn.ln.truck.service.account.entity.users.UsersEntity;
 import cn.ln.truck.service.account.service.users.UsersService;
 
@@ -13,8 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-import static cn.ln.truck.service.account.common.ResultEnum.OPERATION_ERROR;
-import static cn.ln.truck.service.account.common.ResultEnum.SUCCESS;
 
 @Api(value = "UsersController", tags = {"用户操作相关API"})
 @RestController
@@ -32,10 +31,10 @@ public class UsersController
         UsersEntity user = userService.findUserById(usercode);
         if (user != null)
         {
-            return ResultUtil.success(SUCCESS, user);
+            return ResultUtil.success(user);
         } else
         {
-            return ResultUtil.success(OPERATION_ERROR, "用户不存在");
+            return ResultUtil.success("用户不存在");
         }
     }
 
@@ -44,7 +43,7 @@ public class UsersController
     public Result<Object> getUserList()
     {
         List<UsersEntity> users = userService.findUserAll();
-        return ResultUtil.success(SUCCESS, users);
+        return ResultUtil.success(users);
     }
 
     @ApiOperation(value = "创建用户")
@@ -57,7 +56,7 @@ public class UsersController
             return ResultUtil .success();
         }
         else {
-            return ResultUtil.error(OPERATION_ERROR) ;
+            return ResultUtil.error("") ;
         }
     }
 
@@ -65,17 +64,45 @@ public class UsersController
     @RequestMapping(method = RequestMethod.POST, path = "updateUser")
     public Object updateUser(@RequestBody UsersEntity usersEntity)
     {
-        int count = userService.updateUser(usersEntity ) ;
+        int count = userService.updateUser(usersEntity) ;
         if(count>0)
         {
             return ResultUtil .success();
         }
         else {
-            return ResultUtil.error(OPERATION_ERROR) ;
+            return ResultUtil.error("") ;
         }
     }
 
+    @ApiOperation(value = "用户登录")
+    @RequestMapping(method = RequestMethod.POST, path = "userLogin")
+    public Object userLogin(@RequestBody LoginEntity loginEntity)
+    {
+        UsersEntity user = userService.findUserById(loginEntity.getUserId());
+        if (user == null)
+        {
+            return ResultUtil.error(loginEntity.getUserId()+"  不存在!");
 
+        } else
+        {
+            if(user.getActive()==1)
+            {
+                if(user.getPassword().equals(loginEntity.getPassword()))
+                {
+                    return ResultUtil.success(user);
+                }
+                else
+                {
+                    return ResultUtil.error("密码错误！");
+                }
+            }
+            else
+            {
+                return ResultUtil.error(loginEntity.getUserId()+"  已被停用!");
+            }
+
+        }
+    }
 
 
 
