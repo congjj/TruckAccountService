@@ -6,7 +6,8 @@
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="code" jdbcType="VARCHAR" property="code"/>
         <result column="driver_id" jdbcType="INTEGER" property="driverId"/>
-        <result column="getdate" jdbcType="VARCHAR" property="getDate"/>
+        <result column="driver_name" jdbcType="INTEGER" property="driverName"/>
+        <result column="getdate" jdbcType="TIMESTAMP" property="getDate"/>
         <result column="area_number" jdbcType="VARCHAR" property="areaNumber"/>
         <result column="active" jdbcType="INTEGER" property="active"/>
     </resultMap>

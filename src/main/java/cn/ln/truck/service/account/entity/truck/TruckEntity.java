@@ -17,6 +17,7 @@ public class TruckEntity
     private String areaNumber;
     private String code;
     private int driverId;
+    private String driverName;
     private Date getDate;
     private int active;
 }
