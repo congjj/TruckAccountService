@@ -5,7 +5,6 @@ import cn.ln.truck.service.account.common.ResultUtil;
 import cn.ln.truck.service.account.entity.users.LoginEntity;
 import cn.ln.truck.service.account.entity.users.UsersEntity;
 import cn.ln.truck.service.account.service.users.UsersService;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
