@@ -22,5 +22,4 @@ public class AccountImpl implements AccountService
         return this.accountMapper .findAccountByCode(truckId,accountDate);
     }
 
-
 }
