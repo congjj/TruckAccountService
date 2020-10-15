@@ -21,13 +21,20 @@ public class AccountController
     @Autowired
     AccountService accountService;
 
-    @ApiOperation(value = "获取货车信息")
+    @ApiOperation(value = "获取记账信息")
     @RequestMapping(method = RequestMethod.POST, path = "getAccountByCode")
-    public Result<Object> getTruck(@RequestBody AccountEntity accountEntity)
+    public Result<Object> getAccountByCode(@RequestBody AccountEntity accountEntity)
     {
         return  ResultUtil.success(this.accountService.findAccountByCode(accountEntity.getTruckId(),accountEntity.getAccountDate()));
     }
 
+
+    @ApiOperation(value = "记账操作")
+    @RequestMapping(method = RequestMethod.POST, path = "insertAccount")
+    public Result<Object> insertAccount(@RequestBody AccountEntity accountEntity)
+    {
+        return  ResultUtil.success(this.accountService.findAccountByCode(accountEntity.getTruckId(),accountEntity.getAccountDate()));
+    }
 
 
 

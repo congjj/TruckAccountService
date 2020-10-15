@@ -8,4 +8,5 @@ import java.util.List;
 public interface AccountService
 {
     List<AccountEntity> findAccountByCode(int truckId,  Date accountDate);
+    int insertAccount(AccountEntity accountEntity );
 }

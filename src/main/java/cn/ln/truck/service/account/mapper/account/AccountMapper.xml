@@ -23,8 +23,8 @@
     <select id="findAccountAll" resultMap="BaseResultMap" resultType="cn.ln.truck.service.account.entity.account.AccountEntity">
         select * from account
     </select>
-    <insert id="insertTruck" parameterType="cn.ln.truck.service.account.entity.account.AccountEntity">
-    INSERT INTO account (id, code, driver_id, getdate, area_number ,active)
+    <insert id="insertAccount" parameterType="cn.ln.truck.service.account.entity.account.AccountEntity">
+    INSERT INTO account (id,code, driver_id, getdate, area_number ,active)
     VALUES (#{id,jdbcType=INTEGER},#{code,jdbcType=VARCHAR},#{driver_id,jdbcType=VARCHAR},#{getdate,jdbcType=TIMESTAMP},#{area_number,jdbcType=VARCHAR},#{active,jdbcType=INTEGER})
     </insert>
 

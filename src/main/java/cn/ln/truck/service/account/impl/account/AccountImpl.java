@@ -22,4 +22,10 @@ public class AccountImpl implements AccountService
         return this.accountMapper .findAccountByCode(truckId,accountDate);
     }
 
+    @Override
+    public int insertAccount(AccountEntity accountEntity)
+    {
+        return this.accountMapper .insertAccount(accountEntity );
+    }
+
 }
