@@ -20,7 +20,8 @@
     </resultMap>
 
     <select id="findAccountByCode" resultMap="BaseResultMap" resultType="cn.ln.truck.service.account.entity.account.AccountEntity">
-        select * from account where truck_id = #{truckId,jdbcType=INTEGER}  and account_date &gt;= #{accountDate,jdbcType=DATE} and  account_date &lt;= #{accountDate1,jdbcType=DATE}
+        select * from account where truck_id = #{truckId,jdbcType=INTEGER}
+       and account_date &gt;= #{accountDate,jdbcType=DATE} and  account_date &lt;= #{accountDate1,jdbcType=DATE}
     </select>
     <select id="findAccountAll" resultMap="BaseResultMap" resultType="cn.ln.truck.service.account.entity.account.AccountEntity">
         select * from account

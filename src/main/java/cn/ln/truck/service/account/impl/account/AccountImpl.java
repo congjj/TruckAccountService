@@ -22,8 +22,10 @@ public class AccountImpl implements AccountService
     @Override
     public List<AccountEntity> findAccountByCode(int truckId, Date accountDate)
     {
+        System.out.println(accountDate);
         Date d1 = ResultUtil.getMonthFirstDate(accountDate);
         Date d2 = ResultUtil.getMonthLastDate(accountDate);
+        System.out.println(accountDate);
         return this.accountMapper .findAccountByCode(truckId,d1,d2);
     }
 
