@@ -8,10 +8,12 @@ import cn.ln.truck.service.account.service.account.AccountService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 
 @Api(value = "AccountController", tags = {"记账操作相关API"})
 @RestController
@@ -28,12 +30,11 @@ public class AccountController
         return  ResultUtil.success(this.accountService.findAccountByCode(accountEntity.getTruckId(),accountEntity.getAccountDate()));
     }
 
-
     @ApiOperation(value = "记账操作")
     @RequestMapping(method = RequestMethod.POST, path = "insertAccount")
     public Result<Object> insertAccount(@RequestBody AccountEntity accountEntity)
     {
-        return  ResultUtil.success(this.accountService.findAccountByCode(accountEntity.getTruckId(),accountEntity.getAccountDate()));
+        return  ResultUtil.success(this.accountService.insertAccount(accountEntity));
     }
 
 

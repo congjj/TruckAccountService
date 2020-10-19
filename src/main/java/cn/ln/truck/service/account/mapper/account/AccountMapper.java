@@ -13,7 +13,7 @@ import java.util.List;
 public interface AccountMapper
 {
     // 当传递的参数个数是两个以上是需要用 @Param
-    List<AccountEntity> findAccountByCode(@Param("truckId")int truckId, @Param("accountDate")Date accountDate);
+    List<AccountEntity> findAccountByCode(@Param("truckId")int truckId, @Param("accountDate")Date accountDate,@Param("accountDate1")Date accountDate1);
     int insertAccount(AccountEntity accountEntity);
 
 

@@ -1,8 +1,10 @@
 package cn.ln.truck.service.account.impl.account;
 
+import cn.ln.truck.service.account.common.ResultUtil;
 import cn.ln.truck.service.account.entity.account.AccountEntity;
 import cn.ln.truck.service.account.mapper.account.AccountMapper;
 import cn.ln.truck.service.account.service.account.AccountService;
+import org.apache.ibatis.session.SqlSessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,10 +18,13 @@ public class AccountImpl implements AccountService
     @Autowired
     AccountMapper accountMapper;
 
+
     @Override
     public List<AccountEntity> findAccountByCode(int truckId, Date accountDate)
     {
-        return this.accountMapper .findAccountByCode(truckId,accountDate);
+        Date d1 = ResultUtil.getMonthFirstDate(accountDate);
+        Date d2 = ResultUtil.getMonthLastDate(accountDate);
+        return this.accountMapper .findAccountByCode(truckId,d1,d2);
     }
 
     @Override

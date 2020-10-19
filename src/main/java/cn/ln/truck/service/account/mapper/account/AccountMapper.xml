@@ -11,21 +11,23 @@
         <result column="count" jdbcType="DOUBLE" property="count"/>
         <result column="result" jdbcType="DOUBLE" property="result"/>
         <result column="account_date" jdbcType="DATE" property="accountDate"/>
+        <result column="account_date" jdbcType="DATE" property="accountDate1"/>
         <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime"/>
         <result column="active" jdbcType="INTEGER" property="active"/>
         <result column="custom_id" jdbcType="INTEGER" property="customId"/>
+        <result column="custom_name" jdbcType="VARCHAR" property="customName"/>
         <result column="remark" jdbcType="VARCHAR" property="remark"/>
     </resultMap>
 
     <select id="findAccountByCode" resultMap="BaseResultMap" resultType="cn.ln.truck.service.account.entity.account.AccountEntity">
-        select * from account where truck_id = #{truckId,jdbcType=INTEGER} and account_date = #{accountDate,jdbcType=DATE}
+        select * from account where truck_id = #{truckId,jdbcType=INTEGER}  and account_date &gt;= #{accountDate,jdbcType=DATE} and  account_date &lt;= #{accountDate1,jdbcType=DATE}
     </select>
     <select id="findAccountAll" resultMap="BaseResultMap" resultType="cn.ln.truck.service.account.entity.account.AccountEntity">
         select * from account
     </select>
     <insert id="insertAccount" parameterType="cn.ln.truck.service.account.entity.account.AccountEntity">
-    INSERT INTO account (id,code, driver_id, getdate, area_number ,active)
-    VALUES (#{id,jdbcType=INTEGER},#{code,jdbcType=VARCHAR},#{driver_id,jdbcType=VARCHAR},#{getdate,jdbcType=TIMESTAMP},#{area_number,jdbcType=VARCHAR},#{active,jdbcType=INTEGER})
+    INSERT INTO account (subject_id,truck_id,subject_name,price,count,result,account_date,modify_time,active,custom_id,remark,custom_name)
+    VALUES (#{subjectId,jdbcType=INTEGER},#{truckId,jdbcType=INTEGER},#{subjectName,jdbcType=VARCHAR},#{price,jdbcType=DOUBLE},#{count,jdbcType=DOUBLE},#{result,jdbcType=DOUBLE},#{accountDate,jdbcType=DATE},#{modifyTime,jdbcType=TIMESTAMP},#{active,jdbcType=INTEGER},#{customId,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR},#{customName,jdbcType=VARCHAR})
     </insert>
 
     <!--    <update id="updateAccount" parameterType="cn.ln.truck.service.account.entity.users.UsersEntity">-->
