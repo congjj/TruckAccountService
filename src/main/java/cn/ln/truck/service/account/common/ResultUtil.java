@@ -41,7 +41,6 @@ public class ResultUtil
         cal.setTime(date);
         final int last = cal.getActualMinimum(Calendar.DAY_OF_MONTH);
         cal.set(Calendar.DAY_OF_MONTH, last);
-
         return cal.getTime();
     }
 
@@ -49,13 +48,12 @@ public class ResultUtil
     public static Date getMonthLastDate(Date date)
     {
         final Calendar cal = Calendar.getInstance();
-
         cal.setTime(date);
-
         final int last = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-
         cal.set(Calendar.DAY_OF_MONTH, last);
-
+        cal.set(Calendar.HOUR,23);
+        cal.set(Calendar.MINUTE, 59);
+        cal.set(Calendar.SECOND,59);
         return cal.getTime();
     }
 
