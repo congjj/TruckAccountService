@@ -37,6 +37,11 @@ public class AccountController
         return  ResultUtil.success(this.accountService.insertAccount(accountEntity));
     }
 
-
+    @ApiOperation(value = "修改记账操作")
+    @RequestMapping(method = RequestMethod.POST, path = "updateAccount")
+    public Result<Object> updateAccount(@RequestBody AccountEntity accountEntity)
+    {
+        return  ResultUtil.success(this.accountService.updateAccount(accountEntity));
+    }
 
 }

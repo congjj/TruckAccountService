@@ -16,5 +16,7 @@ public interface AccountMapper
     List<AccountEntity> findAccountByCode(@Param("truckId")int truckId, @Param("accountDate")Date accountDate,@Param("accountDate1")Date accountDate1);
     int insertAccount(AccountEntity accountEntity);
 
+    int updateAccount(AccountEntity accountEntity);
+
 
 }

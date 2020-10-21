@@ -9,4 +9,5 @@ public interface AccountService
 {
     List<AccountEntity> findAccountByCode(int truckId,  Date accountDate);
     int insertAccount(AccountEntity accountEntity );
+    int updateAccount(AccountEntity accountEntity );
 }
