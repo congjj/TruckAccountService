@@ -3,14 +3,12 @@ package cn.ln.truck.service.account.controller.subjects;
 
 import cn.ln.truck.service.account.common.Result;
 import cn.ln.truck.service.account.common.ResultUtil;
-import cn.ln.truck.service.account.service.service.SubjectsService;
+import cn.ln.truck.service.account.service.subjects.SubjectsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @Api(value = "SubjectsController", tags = {"费用科目操作相关API"})
@@ -41,5 +39,19 @@ public class SubjectsController
     {
         return  ResultUtil.success(this.subjectsService.findSubjectsAll());
     }
+
+
+    @ApiOperation(value = "获取科室列表", notes = "")
+    @RequestMapping(method = RequestMethod.GET, path = "getSubjectByUserAndTruckId")
+    public Result<Object> getSubjectByUserAndTruckId(
+            @ApiParam(value = "用户Id", required = false) @RequestParam(required = false) String userId,
+            @ApiParam(value = "货车Id", required = false) @RequestParam(required = false) String truckId
+    ) {
+
+        return  ResultUtil.success(this.subjectsService.findSubjectsByUserIdAndTruckId(userId,truckId));
+    }
+
+
+
 
 }
