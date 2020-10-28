@@ -57,7 +57,6 @@ public class SubjectsImpl implements SubjectsService
                     }
                 }
             }
-
         }
         return resultList;
     }
