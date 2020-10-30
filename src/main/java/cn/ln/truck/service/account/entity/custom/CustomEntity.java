@@ -16,10 +16,14 @@ public class CustomEntity
 {
     @ApiModelProperty(value = "主键", required = false)
     private int id;
+    @ApiModelProperty(value = "客户名称", required = false)
+    private String name;
     @ApiModelProperty(value = "电话号码", required = false)
     private String tel;
     @ApiModelProperty(value = "地址", required = false)
     private String address;
     @ApiModelProperty(value = "是否启用", required = false)
+    private String userId;
+    @ApiModelProperty(value = "用户Id", required = false)
     private int active;
 }
