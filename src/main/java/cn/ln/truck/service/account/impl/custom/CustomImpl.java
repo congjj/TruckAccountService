@@ -35,12 +35,17 @@ public class CustomImpl implements CustomService
     @Override
     public int insertCustom(CustomEntity customEntity)
     {
-        return 0;
+        customEntity.setActive(1);
+        if(customEntity .getName()==null || customEntity .getTel()==null)
+        {
+            return 0;
+        }
+        return  this.customMapper.insertCustom(customEntity);
     }
 
     @Override
     public int updateCustom(CustomEntity customEntity)
     {
-        return 0;
+        return this.customMapper .updateCustom(customEntity);
     }
 }

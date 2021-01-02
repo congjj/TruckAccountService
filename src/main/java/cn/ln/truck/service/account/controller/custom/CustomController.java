@@ -3,6 +3,7 @@ package cn.ln.truck.service.account.controller.custom;
 
 import cn.ln.truck.service.account.common.Result;
 import cn.ln.truck.service.account.common.ResultUtil;
+import cn.ln.truck.service.account.entity.custom.CustomEntity;
 import cn.ln.truck.service.account.service.custom.CustomService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -41,5 +42,22 @@ public class CustomController
     {
         return  ResultUtil.success(this.customService.findCustomAll());
     }
+
+
+    @ApiOperation(value = "创建客户信息")
+    @RequestMapping(method = RequestMethod.POST, path = "insertCustom")
+    public Result<Object> insertCustom(@RequestBody CustomEntity customEntity)
+    {
+        return  ResultUtil.success(this.customService.insertCustom(customEntity));
+    }
+
+
+    @ApiOperation(value = "修改客户信息")
+    @RequestMapping(method = RequestMethod.POST, path = "updateCustom")
+    public Result<Object> updateCustom(@RequestBody CustomEntity customEntity)
+    {
+        return  ResultUtil.success(this.customService.updateCustom(customEntity));
+    }
+
 
 }

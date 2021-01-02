@@ -9,6 +9,8 @@
         <result column="address" jdbcType="VARCHAR" property="address"/>
         <result column="user_id" jdbcType="VARCHAR" property="userId"/>
         <result column="active" jdbcType="INTEGER" property="active"/>
+        <result column="person_contact" jdbcType="VARCHAR" property="personContact"/>
+        <result column="corporation" jdbcType="VARCHAR" property="corporation"/>
     </resultMap>
 
     <select id="findCustomById" resultType="cn.ln.truck.service.account.entity.custom.CustomEntity">
@@ -21,27 +23,39 @@
         select * from custom where active =1
     </select>
     <insert id="insertCustom" parameterType="cn.ln.truck.service.account.entity.custom.CustomEntity">
-    INSERT INTO custom (id,name,tel,address,active)
-    VALUES (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{active,jdbcType=INTEGER})
+    INSERT INTO custom (id,name,tel,address,active,user_id,person_contact,corporation)
+    VALUES (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{tel,jdbcType=VARCHAR},#{address,jdbcType=VARCHAR},#{active,jdbcType=INTEGER},#{userId,jdbcType=VARCHAR},#{personContact,jdbcType=VARCHAR},#{corporation,jdbcType=VARCHAR})
     </insert>
 
-    <!--    <update id="updateAccount" parameterType="cn.ln.truck.service.account.entity.users.UsersEntity">-->
-    <!--        update users-->
-    <!--        <set>-->
-    <!--            <if test="id != null">-->
-    <!--                id = #{id,jdbcType=VARCHAR},-->
-    <!--            </if>-->
-    <!--            <if test="name != null">-->
-    <!--                name = #{name,jdbcType=VARCHAR},-->
-    <!--            </if>-->
-    <!--            <if test="password != null">-->
-    <!--                password = #{password,jdbcType=VARCHAR},-->
-    <!--            </if>-->
-    <!--            <if test="active != null">-->
-    <!--                active = #{active,jdbcType=INTEGER},-->
-    <!--            </if>-->
-    <!--        </set>-->
-    <!--        where id = #{id,jdbcType=VARCHAR}-->
-    <!--    </update>-->
+    <update id="updateCustom" parameterType="cn.ln.truck.service.account.entity.custom.CustomEntity">
+        update custom
+        <set>
+            <if test="id != null">
+                id = #{id,jdbcType=VARCHAR},
+            </if>
+            <if test="name != null">
+                name = #{name,jdbcType=VARCHAR},
+            </if>
+            <if test="tel != null">
+                tel = #{tel,jdbcType=VARCHAR},
+            </if>
+            <if test="address != null">
+                address = #{address,jdbcType=VARCHAR},
+            </if>
+            <if test="active != null">
+                active = #{active,jdbcType=INTEGER},
+            </if>
+            <if test="userId != null">
+                user_id = #{userId,jdbcType=VARCHAR},
+            </if>
+            <if test="personContact != null">
+                person_contact = #{personContact,jdbcType=VARCHAR},
+            </if>
+            <if test="corporation != null">
+                corporation = #{corporation,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
 
 </mapper>

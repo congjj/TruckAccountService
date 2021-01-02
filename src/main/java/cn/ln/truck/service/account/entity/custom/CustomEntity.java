@@ -26,4 +26,8 @@ public class CustomEntity
     private String userId;
     @ApiModelProperty(value = "用户Id", required = false)
     private int active;
+    @ApiModelProperty(value = "联系人", required = false)
+    private String personContact;
+    @ApiModelProperty(value = "法人", required = false)
+    private String corporation;
 }
